@@ -32,9 +32,10 @@ void loop(){
   {
     CAN.readMsgBuf(&len, buf);    // read data,  len: data length, buf: data buf
     canId = CAN.getCanId();    
-    Serial.write(byte(len));    
+        
     Serial.write(byte((canId >> 8) & 0xFF));    
     Serial.write(byte(canId & 0xFF));
+    Serial.write(byte(len));
     while(i<len) // print the data
     {
       Serial.write(byte(buf[i]));
